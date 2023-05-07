@@ -1,5 +1,5 @@
 /*
-An Armstrong number is a number that is the sum of its own digits each raised to the 
+An Armstrong number is a number that is the sum of its own digits each raised to the
 power of the number of digits.
 For example:
     9 is an Armstrong number, because 9 = 9^1 = 9
