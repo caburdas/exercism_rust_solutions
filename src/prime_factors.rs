@@ -1,4 +1,12 @@
+/*
+Compute the prime factors of a given natural number.
+A prime number is only evenly divisible by itself and 1.
+Note that 1 is not a prime number.
+Example
 
+What are the prime factors of 60?
+The list of prime factors of 60: 2, 2, 3, and 5.
+ */
 
 pub fn factors(n: u64) -> Vec<u64> {
     let mut v = Vec::new();

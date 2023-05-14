@@ -6,7 +6,6 @@ Remember that while people commonly count with 1-based indexing (i.e. "the 6th p
  */
 #[warn(dead_code)]
 mod nth_prime {
-    use std::{thread::sleep, time::Duration};
 
     pub fn nth(n: u32) -> u32 {
         let mut i = 2;
