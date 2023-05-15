@@ -7,6 +7,7 @@ mod nth_prime;
 mod prime_factors;
 mod reverse;
 mod square_of_sum;
+mod clock;
 
 fn main() {
     println!("Main");

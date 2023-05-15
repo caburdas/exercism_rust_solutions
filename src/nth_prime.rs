@@ -22,10 +22,10 @@ mod nth_prime {
                 j -= 1;
             }
             if prime {
-                if z == n{
+                if z == n {
                     return i;
                 }
-                z +=1;
+                z += 1;
             }
             i += 1;
         }
@@ -46,13 +46,13 @@ mod nth_prime {
     //         .unwrap()
     // }
 
-     // fn is_prime(number: u32) -> bool {
-     //     !(2..(number as f32).sqrt() as u32 + 1).any(|x| number % x == 0)
-     // }
-     //
-     // pub fn nth(n: u32) -> u32 {
-     //     (2..).filter(|x| is_prime(*x)).nth(n as usize).unwrap()
-     // }
+    // fn is_prime(number: u32) -> bool {
+    //     !(2..(number as f32).sqrt() as u32 + 1).any(|x| number % x == 0)
+    // }
+    //
+    // pub fn nth(n: u32) -> u32 {
+    //     (2..).filter(|x| is_prime(*x)).nth(n as usize).unwrap()
+    // }
 }
 
 #[cfg(test)]

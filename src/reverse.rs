@@ -1,7 +1,7 @@
 /*
 Reverse a string
 For example: input: "cool" output: "looc"
-Test your function on this string: uüu and see what happens. 
+Test your function on this string: uüu and see what happens.
  */
 #[warn(dead_code)]
 //mod reverse_string {

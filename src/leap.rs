@@ -10,7 +10,6 @@ For example, 1997 is not a leap year, but 1996 is. 1900 is not a leap year, but 
 #[warn(dead_code)]
 mod leap {
     pub fn is_leap_year(year: u64) -> bool {
-       
         if year % 400 == 0 || (year % 100 != 0 && year % 4 == 0) {
             return true;
         }

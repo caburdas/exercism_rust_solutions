@@ -11,13 +11,13 @@ The list of prime factors of 60: 2, 2, 3, and 5.
 pub fn factors(n: u64) -> Vec<u64> {
     let mut v = Vec::new();
     let mut num = n;
-    let mut i =2; 
-    while i <= num   {
+    let mut i = 2;
+    while i <= num {
         if num % i == 0 {
             v.push(i);
-            num /=i;
-        }else{
-            i+=1;
+            num /= i;
+        } else {
+            i += 1;
         }
     }
     v
