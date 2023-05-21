@@ -9,96 +9,6 @@ If so, try implementing the Display trait for Clock instead.
 Traits allow for a common way to implement functionality for various types.
 For additional learning, consider how you might implement String::from for the Clock type. You don't have to actually implement this—it's redundant with Display, which is generally the better choice when the destination type is String—but it's useful to have a few type-conversion traits in your toolkit.
 */
-// use std::fmt;
-// #[derive(PartialEq,Debug)]
-// pub struct Clock{
-//     h :i32,
-//     m :i32,
-// }
-
-// impl fmt::Display for Clock {
-//     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-//         write!(f, "{:0>2}:{:0>2}", self.h, self.m)
-//     }
-// }
-
-// fn check_hour(hours: i32) -> i32{
-//     if hours >= 0 && hours < 24 {
-//         hours
-//     }else if hours >= 24 {
-//         hours % 24
-//     }else if hours <0 && hours > -24 {
-//         24 + hours
-//     }else{
-//         if hours % 24 == 0
-//         {
-//             0
-//         } else{
-//             24 + (hours % 24)
-//         }
-//     }
-// }
-
-// impl Clock {
-//     pub fn new(hours: i32, minutes: i32) -> Self {
-//         //unimplemented!("Construct a new Clock from {hours} hours and {minutes} minutes");
-
-//         let mut h:i32;
-//         let mut m = 0;
-//         h = check_hour(hours);
-
-//         if minutes >= 0 && minutes < 60 {
-//             m = minutes;
-//         }else if minutes >= 60{
-//             m = minutes % 60;
-//             h += minutes / 60;
-//             h = check_hour(h);
-//         }else if minutes < 0 && minutes >= -60 {
-//             m = 60 + minutes;
-//             h-=1;
-//             h = check_hour(h);
-//         }else if minutes < -60{
-//             if  minutes % 60 == 0{
-//                 m = 0;
-//                 h += minutes / 60;
-//             }else{
-//                 m = 60 + ( minutes % 60);
-//                 h += -1 + minutes / 60;
-//             }
-//             h = check_hour(h);
-//         }
-
-//         Clock{h, m}
-//     }
-
-//     pub fn add_minutes(&self, minutes: i32) -> Self {
-
-//         let mut h:i32 = self.h;
-//         let mut m = 0;
-//         let m2 = self.m + minutes;
-//         if m2 >= 0 && m2 < 60 {
-//             m = m2;
-//         }else if m2 >= 60{
-//             m = m2 % 60;
-//             h += m2 / 60;
-//             h = check_hour(h);
-//         }else if m2 < 0 && m2 >= -60 {
-//             m = 60 + m2;
-//             h-=1;
-//             h = check_hour(h);
-//         }else if m2 < -60{
-//             if  m2 % 60 == 0{
-//                 m = 0;
-//                 h += m2 / 60;
-//             }else{
-//                 m = 60 + ( m2 % 60);
-//                 h += -1 + (m2 / 60);
-//             }
-//             h = check_hour(h);
-//         }
-//         Clock {h, m}
-//     }
-// }
 
 use std::fmt;
 const MIN_PER_DAY: i64 = 24 * 60;
@@ -112,10 +22,10 @@ impl Clock {
     pub fn new(hours: i64, minutes: i64) -> Clock {
         let minutes =
             (((hours * MIN_PER_HOUR + minutes) % MIN_PER_DAY) + MIN_PER_DAY) % MIN_PER_DAY;
-        //                                                 |             |
-        //  convert all to minutes per day >>>>>>>>>>>>>>>>|             |
-        //                                                               |
-        //   handles negative values >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
+        //                                                       |             |
+        //  convert all to minutes per day >>>>>>>>>>>>>>>>>>>>>>|             |
+        //                                                                     |
+        //   handles negative values >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|
 
         Clock { minutes: minutes }
     }
