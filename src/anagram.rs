@@ -13,7 +13,7 @@ mod anagram {
     use std::collections::HashSet;
     pub fn anagrams_for<'a>(word: &str, possible_anagrams: &'a [&str]) -> HashSet<&'a str> {
         let mut word_list: Vec<char> = word.to_lowercase().chars().collect();
-        word_list.sort();
+        word_list.sort_unstable();
         let mut sol: HashSet<&str> = HashSet::new();
 
         for possible_anagram in possible_anagrams {
@@ -27,7 +27,7 @@ mod anagram {
 
             let mut possible_anagram_word_list: Vec<char> =
                 possible_anagram.to_lowercase().chars().collect();
-            possible_anagram_word_list.sort();
+            possible_anagram_word_list.sort_unstable();
 
             if word_list == possible_anagram_word_list {
                 sol.insert(possible_anagram);
