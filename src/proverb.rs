@@ -7,7 +7,6 @@ You are going to have to adjust the function signature provided in the stub in o
 Try to limit case changes. Case changes are expensive in terms of time, so it's faster to minimize them.
 If sorting, consider sort_unstable which is typically faster than stable sorting. When applicable, unstable sorting is preferred because it is generally faster than stable sorting and it doesn't allocate auxiliary memory.
  */
-use std::slice::Chunks;
 
 pub fn build_proverb(list: &[&str]) -> String {
     match list.len() {

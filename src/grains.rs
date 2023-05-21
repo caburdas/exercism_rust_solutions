@@ -9,24 +9,20 @@ Write code that shows:
     panics with a message of "Square must be between 1 and 64" if the value is not valid
 
  */
-#[warn(dead_code)]
-mod grains {
-    pub fn square(s: u32) -> u64 {
-        if s == 0 || s > 64 {
-            panic!("Square must be between 1 and 64")
-        }
-        2_u64.pow(s - 1)
+pub fn square(s: u32) -> u64 {
+    if s == 0 || s > 64 {
+        panic!("Square must be between 1 and 64")
     }
+    2_u64.pow(s - 1)
+}
 
-    pub fn total() -> u64 {
-        (0..64 as u32).map(|x| 2_u64.pow(x)).sum()
-    }
+pub fn total() -> u64 {
+    (0..64 as u32).map(|x| 2_u64.pow(x)).sum()
 }
 
 #[cfg(test)]
 mod grains_test {
-
-    use crate::grains::*;
+    use crate::grains;
 
     fn process_square_case(input: u32, expected: u64) {
         assert_eq!(grains::square(input), expected);

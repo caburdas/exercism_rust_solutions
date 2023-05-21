@@ -9,37 +9,32 @@ Try to limit case changes. Case changes are expensive in terms of time, so it's 
 If sorting, consider sort_unstable which is typically faster than stable sorting. When applicable, unstable sorting is preferred because it is generally faster than stable sorting and it doesn't allocate auxiliary memory.
  */
 
-mod anagram {
-    use std::collections::HashSet;
-    pub fn anagrams_for<'a>(word: &str, possible_anagrams: &'a [&str]) -> HashSet<&'a str> {
-        let mut word_list: Vec<char> = word.to_lowercase().chars().collect();
-        word_list.sort_unstable();
-        let mut sol: HashSet<&str> = HashSet::new();
-
-        for possible_anagram in possible_anagrams {
-            if word.len() != possible_anagram.len()
-                || word
-                    .to_lowercase()
-                    .eq(possible_anagram.to_lowercase().as_str())
-            {
-                continue;
-            }
-
-            let mut possible_anagram_word_list: Vec<char> =
-                possible_anagram.to_lowercase().chars().collect();
-            possible_anagram_word_list.sort_unstable();
-
-            if word_list == possible_anagram_word_list {
-                sol.insert(possible_anagram);
-            }
+use std::collections::HashSet;
+pub fn anagrams_for<'a>(word: &str, possible_anagrams: &'a [&str]) -> HashSet<&'a str> {
+    let mut word_list: Vec<char> = word.to_lowercase().chars().collect();
+    word_list.sort_unstable();
+    let mut sol: HashSet<&str> = HashSet::new();
+    for possible_anagram in possible_anagrams {
+        if word.len() != possible_anagram.len()
+            || word
+                .to_lowercase()
+                .eq(possible_anagram.to_lowercase().as_str())
+        {
+            continue;
         }
-        sol
+        let mut possible_anagram_word_list: Vec<char> =
+            possible_anagram.to_lowercase().chars().collect();
+        possible_anagram_word_list.sort_unstable();
+        if word_list == possible_anagram_word_list {
+            sol.insert(possible_anagram);
+        }
     }
+    sol
 }
 
 #[cfg(test)]
 mod anagrams_tests {
-    use super::anagram;
+    use crate::anagram;
     use std::collections::HashSet;
 
     fn process_anagram_case(word: &str, inputs: &[&str], expected: &[&str]) {
