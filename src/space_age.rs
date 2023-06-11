@@ -35,7 +35,7 @@ pub trait Planet {
     const PERIOD: f64;
 
     fn years_during(d: &Duration) -> f64 {
-        d.0 / (Self::PERIOD * 31557600 as f64)
+        d.0 / (Self::PERIOD * 31557600_f64)
     }
 }
 

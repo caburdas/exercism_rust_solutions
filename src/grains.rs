@@ -17,7 +17,7 @@ pub fn square(s: u32) -> u64 {
 }
 
 pub fn total() -> u64 {
-    (0..64 as u32).map(|x| 2_u64.pow(x)).sum()
+    (0..64_u32).map(|x| 2_u64.pow(x)).sum()
 }
 
 #[cfg(test)]

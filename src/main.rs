@@ -8,9 +8,9 @@ mod leap;
 mod nth_prime;
 mod prime_factors;
 mod proverb;
+mod raindrops;
 mod reverse;
 mod space_age;
-
 mod square_of_sum;
 
 fn main() {
