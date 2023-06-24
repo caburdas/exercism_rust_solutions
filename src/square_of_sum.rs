@@ -21,7 +21,7 @@ pub fn difference(n: u32) -> u32 {
 }
 
 #[cfg(test)]
-mod squarre_sum {
+mod squarre_sum_test {
     use crate::square_of_sum::*;
 
     #[test]

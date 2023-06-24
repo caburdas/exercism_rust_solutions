@@ -12,6 +12,7 @@ mod raindrops;
 mod reverse;
 mod space_age;
 mod square_of_sum;
+mod sublist;
 
 fn main() {
     println!("Main");
