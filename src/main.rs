@@ -13,6 +13,7 @@ mod reverse;
 mod space_age;
 mod square_of_sum;
 mod sublist;
+mod sum_of_multiples;
 
 fn main() {
     println!("Main");
