@@ -1,6 +1,7 @@
 mod anagram;
 mod armstrong_numbers;
 mod beer_song;
+mod bob;
 mod clock;
 mod gigasecond;
 mod grains;

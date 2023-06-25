@@ -20,35 +20,35 @@ pub enum Comparison {
     Unequal,
 }
 pub fn sublist<T: PartialEq>(_first_list: &[T], _second_list: &[T]) -> Comparison {
-
-    match (_first_list.len(), _second_list.len()){
+    match (_first_list.len(), _second_list.len()) {
         (0, 0) => Comparison::Equal,
         (0, _) => Comparison::Sublist,
         (_, 0) => Comparison::Superlist,
-        (n,m) if n == m => { 
+        (n, m) if n == m => {
             if _first_list == _second_list {
                 return Comparison::Equal;
-            }else {
+            } else {
                 return Comparison::Unequal;
             }
-        },
-        (n,m) if n > m => { 
-            for sl in _first_list.windows(_second_list.len()){
+        }
+        (n, m) if n > m => {
+            for sl in _first_list.windows(_second_list.len()) {
                 if sl == _second_list {
                     return Comparison::Superlist;
                 }
             }
             return Comparison::Unequal;
-        },
-        _ => { //_second_list > _first_list
-            for sl in _second_list.windows(_first_list.len()){
-            if sl == _first_list {
-                return Comparison::Sublist;
-            }
         }
-        return Comparison::Unequal;
-    }}
-    
+        _ => {
+            //_second_list > _first_list
+            for sl in _second_list.windows(_first_list.len()) {
+                if sl == _first_list {
+                    return Comparison::Sublist;
+                }
+            }
+            return Comparison::Unequal;
+        }
+    }
 }
 
 #[cfg(test)]
