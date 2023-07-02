@@ -5,6 +5,7 @@ mod bob;
 mod clock;
 mod gigasecond;
 mod grains;
+mod high_scores;
 mod leap;
 mod nth_prime;
 mod prime_factors;
