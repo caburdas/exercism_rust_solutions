@@ -5,14 +5,16 @@ Your task is to build a high-score component of the classic Frogger game, one of
 Consider retaining a reference to scores in the struct - copying is not necessary. You will require some lifetime annotations, though.
  */
 #[derive(Debug)]
-pub struct HighScores{
-    sc : Vec<u32>
+pub struct HighScores {
+    sc: Vec<u32>,
 }
 
 impl HighScores {
     pub fn new(scores: &[u32]) -> Self {
         //unimplemented!("Construct a HighScores struct, given the scores: {scores:?}")
-        HighScores { sc : scores.to_vec()}
+        HighScores {
+            sc: scores.to_vec(),
+        }
     }
 
     pub fn scores(&self) -> &[u32] {
@@ -33,7 +35,7 @@ impl HighScores {
         let mut aux = self.sc.clone();
         aux.sort();
         aux.reverse();
-        let ret : Vec<u32>= aux.iter().map(|f| *f ).take(3).collect();
+        let ret: Vec<u32> = aux.iter().map(|f| *f).take(3).collect();
         ret
     }
 }
