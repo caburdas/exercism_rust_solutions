@@ -7,6 +7,7 @@ mod gigasecond;
 mod grains;
 mod high_scores;
 mod leap;
+mod luhn;
 mod matching_brackets;
 mod minesweeper;
 mod nth_prime;

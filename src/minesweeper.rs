@@ -28,20 +28,20 @@ All the inputs and outputs are in ASCII. Rust Strings and &str are utf8, so whil
 Can you complete the challenge without cloning the input?
 */
 pub fn annotate(minefield: &[&str]) -> Vec<String> {
-    let mut aux : Vec<Vec<char>> = Vec::new();
-    let mut ret : Vec<String> = Vec::new();
-    
+    let mut aux: Vec<Vec<char>> = Vec::new();
+    let mut ret: Vec<String> = Vec::new();
+
     if minefield.is_empty() {
         return ret;
     }
 
-    if minefield[0] == "".to_string(){
+    if minefield[0] == "".to_string() {
         ret.push("".to_string());
         return ret;
     }
 
     for i in minefield {
-        let mut aux2 : Vec<char> = Vec::new();
+        let mut aux2: Vec<char> = Vec::new();
         for j in i.chars() {
             aux2.push(j);
         }
@@ -50,66 +50,66 @@ pub fn annotate(minefield: &[&str]) -> Vec<String> {
 
     let rows = aux.len();
     let columns = aux[0].len();
-    
-    for y in 0..rows{
+
+    for y in 0..rows {
         let mut s = "".to_string();
-        for x in 0..columns{
-            let mut cont =0;    
-            
+        for x in 0..columns {
+            let mut cont = 0;
+
             //
-            if aux[y][x] == '*'{
+            if aux[y][x] == '*' {
                 s.push('*');
                 continue;
             }
             //x - 1, y -1
-            if ((x as i32) - 1) >=0  && ((y as i32) - 1) >=0 {
-                if aux[y-1][x-1] == '*'{
-                    cont+=1;
+            if ((x as i32) - 1) >= 0 && ((y as i32) - 1) >= 0 {
+                if aux[y - 1][x - 1] == '*' {
+                    cont += 1;
                 }
             }
             //x, y -1
             if ((y as i32) - 1) >= 0 {
-                if aux[y-1][x] == '*'{
-                    cont+=1;
+                if aux[y - 1][x] == '*' {
+                    cont += 1;
                 }
-            }             
+            }
             //x + 1, y -1
-            if x + 1 < columns && ((y as i32)- 1)  >=0{
-                if aux[y-1][x+1] == '*'{
-                    cont+=1;
+            if x + 1 < columns && ((y as i32) - 1) >= 0 {
+                if aux[y - 1][x + 1] == '*' {
+                    cont += 1;
                 }
             }
             //x -1, y
-            if ((x as i32) - 1) >=0 {
-                if aux[y][x-1] == '*'{
-                    cont+=1;
+            if ((x as i32) - 1) >= 0 {
+                if aux[y][x - 1] == '*' {
+                    cont += 1;
                 }
             }
             //x + 1, y
             if x + 1 < columns {
-                if aux[y][x+1] == '*'{
-                    cont+=1;
+                if aux[y][x + 1] == '*' {
+                    cont += 1;
                 }
             }
             //x -1 , y + 1
-            if ((x as i32)- 1) >=0  && y + 1 < rows {
-                if aux[y+1][x-1] == '*'{
-                    cont+=1;
+            if ((x as i32) - 1) >= 0 && y + 1 < rows {
+                if aux[y + 1][x - 1] == '*' {
+                    cont += 1;
                 }
             }
             //x, y + 1
             if y + 1 < rows {
-                if aux[y+1][x] == '*'{
-                    cont+=1;
+                if aux[y + 1][x] == '*' {
+                    cont += 1;
                 }
             }
             //x+1, y +1
-            if x + 1 < columns  && y + 1 < rows {
-                if aux[y+1][x+1] == '*'{
-                    cont+=1;
+            if x + 1 < columns && y + 1 < rows {
+                if aux[y + 1][x + 1] == '*' {
+                    cont += 1;
                 }
             }
-            let mut sol: char =' ';
+            let mut sol: char = ' ';
             match cont {
                 1 => sol = '1',
                 2 => sol = '2',
