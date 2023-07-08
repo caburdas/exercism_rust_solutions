@@ -11,6 +11,7 @@ mod luhn;
 mod matching_brackets;
 mod minesweeper;
 mod nth_prime;
+mod parallel_letter_frequency;
 mod prime_factors;
 mod proverb;
 mod raindrops;
