@@ -1,3 +1,4 @@
+mod acronym;
 mod anagram;
 mod armstrong_numbers;
 mod beer_song;
