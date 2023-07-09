@@ -5,6 +5,7 @@ mod bob;
 mod clock;
 mod gigasecond;
 mod grains;
+mod hashmap;
 mod high_scores;
 mod leap;
 mod luhn;
