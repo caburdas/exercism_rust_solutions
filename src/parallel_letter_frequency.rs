@@ -22,20 +22,32 @@ use std::thread;
 
 pub fn frequency(input: &[&str], worker_count: usize) -> HashMap<char, usize> {
     let hm: HashMap<char, usize> = HashMap::new();
-    let hashmap: Arc<Mutex<HashMap<char, usize>>> = Arc::new(Mutex::new(hm));
+    if input.len() == 0 {
+        return hm;
+    }
 
+    let mut text: Vec<char> = Vec::new();
+    for line in input {
+        for char in line.chars() {
+            if char.is_alphabetic() {
+                text.push(char.to_ascii_lowercase());
+            }
+        }
+    }
+
+    let l = (text.len() as f32 / worker_count as f32).ceil() as usize;
+    if l == 0 {
+        return hm;
+    }
+
+    let hashmap: Arc<Mutex<HashMap<char, usize>>> = Arc::new(Mutex::new(hm));
     thread::scope(|s| {
-        for qq in input.chunks(worker_count) {
+        for worker_text in text.chunks(l) {
             let data = hashmap.clone();
             s.spawn(move || {
-                for j in qq.to_vec() {
-                    for c in j.chars() {
-                        if c.is_alphabetic() {
-                            let cc = c.to_ascii_lowercase();
-                            let mut l = data.lock().unwrap();
-                            *l.entry(cc).or_insert(0) += 1;
-                        }
-                    }
+                for c in worker_text.iter() {
+                    let mut l = data.lock().unwrap();
+                    *l.entry(*c).or_insert(0) += 1;
                 }
             });
         }
