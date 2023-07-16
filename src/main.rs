@@ -1,4 +1,5 @@
 mod acronym;
+mod allergies;
 mod allyourbase;
 mod anagram;
 mod armstrong_numbers;
