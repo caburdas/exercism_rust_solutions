@@ -34,6 +34,17 @@ pub enum Allergen {
     Cats = 128,
 }
 
+const ALLALERGEGIES: [Allergen; 8] = [
+    Allergen::Eggs,
+    Allergen::Peanuts,
+    Allergen::Shellfish,
+    Allergen::Strawberries,
+    Allergen::Tomatoes,
+    Allergen::Chocolate,
+    Allergen::Pollen,
+    Allergen::Cats,
+];
+
 impl Allergies {
     pub fn new(score: u32) -> Self {
         return Allergies { value: score };
@@ -44,24 +55,10 @@ impl Allergies {
     }
 
     pub fn allergies(&self) -> Vec<Allergen> {
-        let mut res: Vec<Allergen> = Vec::new();
-        let mut j: u32 = 1;
-        for _ in 0..8 {
-            let x = self.value & (j as u32);
-            match x {
-                x if x == Allergen::Eggs as u32 => res.push(Allergen::Eggs),
-                x if x == Allergen::Peanuts as u32 => res.push(Allergen::Peanuts),
-                x if x == Allergen::Shellfish as u32 => res.push(Allergen::Shellfish),
-                x if x == Allergen::Strawberries as u32 => res.push(Allergen::Strawberries),
-                x if x == Allergen::Tomatoes as u32 => res.push(Allergen::Tomatoes),
-                x if x == Allergen::Chocolate as u32 => res.push(Allergen::Chocolate),
-                x if x == Allergen::Pollen as u32 => res.push(Allergen::Pollen),
-                x if x == Allergen::Cats as u32 => res.push(Allergen::Cats),
-                _ => {}
-            }
-            j = j << 1;
-        }
-        res
+        ALLALERGEGIES
+            .into_iter()
+            .filter(|x| self.is_allergic_to(x))
+            .collect()
     }
 }
 
