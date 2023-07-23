@@ -1,6 +1,7 @@
 mod acronym;
 mod allergies;
 mod allyourbase;
+mod alphametics;
 mod anagram;
 mod armstrong_numbers;
 mod beer_song;
