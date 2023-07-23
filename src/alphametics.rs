@@ -20,11 +20,8 @@ use std::collections::HashMap;
 
 pub fn solve(input: &str) -> Option<HashMap<char, u8>> {
     
-    //P(n,r)=10!(10−x)! //x number of digitss
-
     let mut res:HashMap<char, u8> = HashMap::new();
     let mut res2:HashMap<char, char> = HashMap::new();
-
 
     for x in input.chars().filter(|c| c.is_alphabetic()){
         res.insert(x, 0);
@@ -36,13 +33,23 @@ pub fn solve(input: &str) -> Option<HashMap<char, u8>> {
         return  None;
     }
 
-    let input2 = input.replace(" ", "");
-    let puz: Vec<&str> = input2.split("==").collect();
+    let input2 = input.replace(" ", ""); // remove spaces
+    let puz: Vec<&str> = input2.split("==").collect(); 
     
-    let solution = puz[1].trim();
-    //let operators: Vec<&str> = puz[0].split('+').collect();
+    let solution = puz[1];// .trim();
     let operators: Vec<&str> = puz[0].split('+').collect();
 
+
+    let mut max_size_operators = 0;
+    for x in &operators {
+        if x.len() > max_size_operators {
+            max_size_operators = x.len()
+        } 
+    }
+    
+    if solution.len() < max_size_operators {
+        return None;
+    }
 
     let max = 10_u32.pow(characters.len() as u32);
 
@@ -51,30 +58,37 @@ pub fn solve(input: &str) -> Option<HashMap<char, u8>> {
         let formatted = format!("{:0>width$}", i.to_string(),width=characters.len() as usize);
 
         //avoid repeated digits
-        let mut bytes2 : Vec<char>   = formatted.chars().collect();
-        bytes2.sort();
-        bytes2.dedup(); 
-        if bytes2.len() != characters.len(){
+        // let mut bytes2 : Vec<char> = formatted.chars().collect();
+        // bytes2.sort();
+        // bytes2.dedup(); 
+        // if bytes2.len() != characters.len(){
+        //     continue;
+        // }
+        let hs : std::collections::HashSet<char> = formatted.chars().collect();
+        if hs.len() != characters.len(){
             continue;
         }
-        
+
+        //assign each letter a number value
         let cs: Vec<char> = formatted.chars().collect();
         for j in 0..characters.len(){
             res2.insert(characters[j], cs[j]);
         }
 
         //calculate the result
-        let mut string_num ="".to_string();  
+        let mut string_num ="".to_string();      
         for i in solution.chars() {
             string_num.push( *res2.get(&i).unwrap());
         }
+        
         //println!("{}", string_num);
         let result_int = string_num.parse::<i32>().unwrap();
         //println!("{}", result_int);
         
         //calculate operators
         let mut sum_operators = 0;        
-        for operator in operators.clone() {
+        //for operator in operators.clone() {
+        for operator in &operators {
             let mut string_num ="".to_string();  
             for i in operator.chars() {
                 string_num.push( *res2.get(&i).unwrap());
