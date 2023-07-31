@@ -7,6 +7,7 @@ mod armstrong_numbers;
 mod beer_song;
 mod bob;
 mod clock;
+mod collatz_conjecture;
 mod gigasecond;
 mod grains;
 mod hashmap;
