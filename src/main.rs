@@ -1,13 +1,14 @@
 mod acronym;
 mod allergies;
 mod allyourbase;
-mod alphametics;
+//mod alphametics;
 mod anagram;
 mod armstrong_numbers;
 mod beer_song;
 mod bob;
 mod clock;
 mod collatz_conjecture;
+mod diffie_hellman;
 mod gigasecond;
 mod grains;
 mod hashmap;

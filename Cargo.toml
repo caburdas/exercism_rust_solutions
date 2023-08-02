@@ -7,3 +7,6 @@ edition = "2021"
 
 [dependencies]
 time = "0.3.21"
+
+[features]
+big-primes = [] #for optional test in diffie_helmans
