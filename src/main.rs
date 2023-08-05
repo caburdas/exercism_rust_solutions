@@ -23,6 +23,7 @@ mod prime_factors;
 mod proverb;
 mod raindrops;
 mod reverse;
+mod series;
 mod space_age;
 mod square_of_sum;
 mod sublist;
