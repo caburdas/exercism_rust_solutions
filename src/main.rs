@@ -5,6 +5,7 @@ mod allyourbase;
 mod anagram;
 mod armstrong_numbers;
 mod beer_song;
+mod binary_search;
 mod bob;
 mod clock;
 mod collatz_conjecture;

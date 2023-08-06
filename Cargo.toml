@@ -10,3 +10,4 @@ time = "0.3.21"
 
 [features]
 big-primes = [] #for optional test in diffie_helmans
+#generic = [] # NOT implemented !!!!  for optional test in binary search 
