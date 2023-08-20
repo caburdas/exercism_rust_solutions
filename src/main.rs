@@ -7,6 +7,7 @@ mod armstrong_numbers;
 mod beer_song;
 mod binary_search;
 mod bob;
+mod bowling;
 mod clock;
 mod collatz_conjecture;
 mod diffie_hellman;
